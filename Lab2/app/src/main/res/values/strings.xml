@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="to_linear">To Linear</string>
+    <string name="to_relative">To Relative</string>
+    <string name="to_constraint">To Constraint</string>
+</resources>

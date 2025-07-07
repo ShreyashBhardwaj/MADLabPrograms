@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lab8</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="waiting_for_data">Waiting for Data.....</string>
+    <string name="enter_your_message">Enter your Message</string>
+    <string name="send_to_fragement_b">Send to Fragement B</string>
+</resources>

@@ -24,69 +24,69 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    Button send;
-    EditText phoneNo, message;
-
-
 
     private static final int SMS_PERMISSION_CODE = 101;
-
+    private EditText editTextPhoneNumber;
+    private EditText editTextMessage;
+    private TextView textViewReceivedMessages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        phoneNo = findViewById(R.id.PhoneNo);
-        message = findViewById(R.id.Message);
-        send = findViewById(R.id.button);
+        editTextPhoneNumber = findViewById(R.id.PhoneNo);
+        editTextMessage = findViewById(R.id.Message);
+        textViewReceivedMessages = findViewById(R.id.textView);
+        // Request SMS permissions if not granted
 
         if (!checkSMSPermission()) {
             requestSMSPermission();
         }
-
-        IntentFilter iF = new IntentFilter();
-        iF.addAction("android.provider.Telephony.SMS_RECEIVED");
-        registerReceiver(smsReceiver, iF);
+        // Register SMS receiver
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
+        registerReceiver(smsReceiver, intentFilter);
     }
-
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(smsReceiver);
     }
-
+    // Button click listener for sending SMS
     public void sendMessage(View view) {
-        String phoneNumber = phoneNo.getText().toString();
-        String msg = message.getText().toString();
+        String phoneNumber =
+                editTextPhoneNumber.getText().toString().trim();
+        String message = editTextMessage.getText().toString();
+
         if (phoneNumber.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a valid phone number",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
-            Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_SHORT).show();
-        } catch (IllegalArgumentException a) {
-            Toast.makeText(getApplicationContext(), "Invalid Phone Number", Toast.LENGTH_SHORT).show();
+            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+            Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show();
+        } catch (IllegalArgumentException e) {
+            Toast.makeText(this, "Invalid phone number format",
+                    Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Message Not Sent", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Failed to send message",
+                    Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
     }
+    // Check if SMS permission is granted
 
-    public boolean checkSMSPermission() {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED;
+    private boolean checkSMSPermission() {
+        return ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED;
     }
-
+    // Request SMS permission
     private void requestSMSPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, SMS_PERMISSION_CODE);
+        ActivityCompat.requestPermissions(this, new
+                String[]{Manifest.permission.SEND_SMS}, SMS_PERMISSION_CODE);
     }
-
+    // SMS receiver
     private final BroadcastReceiver smsReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -98,12 +98,14 @@ public class MainActivity extends AppCompatActivity {
                         SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdu);
                         String senderPhoneNumber = smsMessage.getDisplayOriginatingAddress();
                         String messageBody = smsMessage.getMessageBody();
-                        message.append("From: " +
+                        textViewReceivedMessages.append("From: " +
                                 senderPhoneNumber + "\n");
+                        textViewReceivedMessages.append("Message: " +
+                                messageBody + "\n\n");
                     }
                 }
             }
-
         }
     };
 }
+

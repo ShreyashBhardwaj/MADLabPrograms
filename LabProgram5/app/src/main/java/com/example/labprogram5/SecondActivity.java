@@ -1,6 +1,8 @@
 package com.example.labprogram5;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,10 @@ public class SecondActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        Intent i = getIntent();
+        String userName = i.getStringExtra("Username");
+        Toast.makeText(this, "Welcome "+userName, Toast.LENGTH_SHORT).show();
     }
 }

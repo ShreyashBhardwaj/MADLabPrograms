@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Program2</string>
+    <string name="constraint_layout">Constraint Layout</string>
+    <string name="to_linear">To Linear</string>
+    <string name="to_relative">To Relative</string>
+</resources>

@@ -3,4 +3,5 @@
     <string name="explicit_button">Explicit Button</string>
     <string name="implicit_button">Implicit Button</string>
     <string name="intent_example">INTENT EXAMPLE</string>
+    <string name="hello">HELLO</string>
 </resources>

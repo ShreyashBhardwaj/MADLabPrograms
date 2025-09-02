@@ -3,4 +3,9 @@
     <string name="constraint_layout">Constraint Layout</string>
     <string name="to_linear">To Linear</string>
     <string name="to_relative">To Relative</string>
+    <string name="linear_layout">Linear Layout</string>
+    <string name="to_constraint_layout">TO Constraint Layout</string>
+    <string name="to_relative_layout">To Relative Layout</string>
+    <string name="relative_layout">Relative Layout</string>
+    <string name="to_linear_layout">To Linear Layout</string>
 </resources>

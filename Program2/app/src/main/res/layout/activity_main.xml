@@ -23,17 +23,17 @@
         app:layout_constraintVertical_bias="0.363" />
 
     <Button
-        android:id="@+id/relativeLayout"
+        android:id="@+id/toRelativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/to_relative"
-        app:layout_constraintBaseline_toBaselineOf="@+id/linearLayout"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintBaseline_toBaselineOf="@+id/toLinearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/toLinearLayout"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/linearLayout"
+        android:id="@+id/toLinearLayout"
         android:text="@string/to_linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_marginBottom="286dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/relativeLayout" />
+        app:layout_constraintStart_toEndOf="@+id/toRelativeLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

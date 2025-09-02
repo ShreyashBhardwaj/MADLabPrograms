@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".RelativeLayout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="525dp"
+
+        android:text="@string/relative_layout"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/toLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/relativeLayout"
+        android:layout_marginEnd="-69dp"
+        android:layout_marginBottom="-181dp"
+        android:layout_toStartOf="@+id/relativeLayout"
+        android:text="@string/to_linear_layout" />
+
+    <Button
+        android:id="@+id/toConstraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/relativeLayout"
+        android:layout_alignBottom="@+id/relativeLayout"
+        android:layout_marginEnd="-79dp"
+        android:layout_marginBottom="-182dp"
+        android:text="@string/to_constraint_layout" />
+
+</RelativeLayout>

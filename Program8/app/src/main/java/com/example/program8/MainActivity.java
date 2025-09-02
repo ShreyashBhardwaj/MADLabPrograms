@@ -1,14 +1,21 @@
 package com.example.program8;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button firstFragment,secondFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +27,31 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        firstFragment = findViewById(R.id.firstFragment);
+        secondFragment = findViewById(R.id.secondFragment);
+
+        firstFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new FirstFragment());
+            }
+        });
+
+        secondFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new SecondFragment());
+            }
+        });
+
+    }
+
+    private void loadFragment(Fragment fragment)
+    {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragment,fragment);
+        ft.commit();
     }
 }

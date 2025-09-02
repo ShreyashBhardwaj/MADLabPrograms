@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Program13</string>
+    <string name="enter_detail_to_be_saved_to_internal_storage">Enter Detail to be saved to Internal Storage</string>
+    <string name="save_to_internal">Save to Internal</string>
+    <string name="enter_detail_to_be_saved_to_external_storage">Enter Detail to be saved to External Storage</string>
+    <string name="load_from_internal">Load From Internal</string>
+    <string name="save_to_external">Save to External</string>
+    <string name="load_from_external">Load From External</string>
+</resources>

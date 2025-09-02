@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Program3&amp;4</string>
+    <string name="give_details">Give Details!!!</string>
+    <string name="python">Python</string>
+    <string name="java">Java</string>
+    <string name="c">C++</string>
+    <string name="football">Football</string>
+    <string name="cricket">Cricket</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="click_it_on_for_heavy_metal">Click it On for Heavy Metal</string>
+    <string name="submit">Submit</string>
+</resources>

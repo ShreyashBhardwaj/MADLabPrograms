@@ -2,6 +2,7 @@ package com.example.program8;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    Button firstFragment,secondFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +28,22 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        loadFragment(new FirstFragment());
-    }
-    public void loadFirstFragment(View view) {
-        loadFragment(new FirstFragment());
-    }
+        firstFragment = findViewById(R.id.btnFirst);
+        secondFragment = findViewById(R.id.btnSecond);
 
-    // Called by android:onClick="loadSecondFragment"
-    public void loadSecondFragment(View view) {
-        loadFragment(new SecondFragment());
+        firstFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new FirstFragment());
+            }
+        });
+
+        secondFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new SecondFragment());
+            }
+        });
     }
 
     private void loadFragment(Fragment fragment) {
